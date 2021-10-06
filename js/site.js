@@ -10,7 +10,7 @@ function getString() {
     //(a) Assigns user's input to the variable userString.
     let userString = document.getElementById("userString").value;
 
-    //(b) userString becomes an argument for a function, reverseString. Thank value is assigned to the variable revString
+    //(b) userString becomes an argument for a function, reverseString. That value is assigned to the variable revString
     let revString = reverseString(userString);
 
     //(c) revString becomes an argument for a function, reverseString.
@@ -31,22 +31,26 @@ function reverseString(userString) {
     let revString = "";
     //In a decremented for loop, the startValue must be higher than the endValue
     for (let i = startValue; i >= endValue; i--) {
-        revString += userString[i]; //userString[i] is added to revString with augmented addition
+        revString += userString[i]; //userString[i] is added to revString with augmented addition.
+        //...so this line of code is takingg Frank at position 5 (k) and adding it to the revString variable.
+        //...Then adding n, then a, then r, then F.
+        //Same as writing revString = revString + userString[i]
 
     };
 
-    return revString
     //Loop 1 - "k"
     //Loop 2 - "kn"
     //Loop 3 - "kna"
     //Loop 4 - "knar"
     //Loop 5 - "knarF"
+    return revString
 
 }
 
-//Definition of the function that displays the target result:
+//Definition of the function that displays the reversed string on the end user's screen:
 function displayString(revString) {
     let output = document.getElementById("results"); //line 79 in app.html, the paragraphed return was assigned id="results"
 
     output.innerHTML = revString;
+    // innerHTML is a property of an element that contains a String. We set revString to the output of the element containing the "results" id.
 }
