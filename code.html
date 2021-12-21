@@ -44,10 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">The Repo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" href="https://github.com/jordanthopps/Rewind" target="_blank">The Repo</a>
                     </li>
                 </ul>
             </div>
@@ -61,32 +58,72 @@
         <div class="container col-xxl-8 px-4 py-5 mt-5">
             <h1 class="border-bottom border-dark border-1">The Code</h1>
             <div class="row">
-                <div class="col-lg-8 col-sm-12">
+                <div class="col-sm-12">
                     <pre class="line-numbers"><code class="language-js">
-                        function displayMessage() {
-                            let msg = ""
+                        //There are three functions that together amass the Rewind application:
+
+
+                        1.
+                        /*Controller Function
+                           In app.html, the input id has been set to: userString. The userString is what the user types into the text field.
+                           In this function, that userString value is assigned to the userString variable (line 11)*/
+                        function getString() {
                         
-                            msg = document.getElementById("message").value;
+                            //(a) Assigns user's input to the variable userString.
+                            let userString = document.getElementById("userString").value;
                         
-                            alert(msg);
+                            //(b) userString becomes an argument for a function, reverseString. That value is assigned to the variable revString
+                            let revString = reverseString(userString);
+                        
+                            //(c) revString becomes an argument for a function, reverseString.
+                            displayString(revString);
+                        }
+                        /*Note: what the getString function above does is takes the user's input (a) > passes that input to the for loop function (b) >
+                                then passes that value to the display function to appear on the user's screen (c)*/
+                        
+                        //Definition of the function that reverses the user's input:
+                        function reverseString(userString) {
+                            let startValue = userString.length - 1; //A string is an array.
+                            let endValue = 0; //The first position of a string in an array is 0
+                        
+                            //Let's assume that the user typed in 'Frank'
+                            //Frank is a string AND an array of characters
+                            //[F, r, a, n, k]
+                            //So the start value will need to be userString.length - 1 becuase the length of a string will always be 1 more than the indexed array length
+                            let revString = "";
+                            //In a decremented for loop, the startValue must be higher than the endValue
+                            for (let i = startValue; i >= endValue; i--) {
+                                revString += userString[i]; //userString[i] is added to revString with augmented addition.
+                                //...so this line of code is takingg Frank at position 5 (k) and adding it to the revString variable.
+                                //...Then adding n, then a, then r, then F.
+                                //Same as writing revString = revString + userString[i]
+                        
+                            };
+                        
+                            //Loop 1 - "k"
+                            //Loop 2 - "kn"
+                            //Loop 3 - "kna"
+                            //Loop 4 - "knar"
+                            //Loop 5 - "knarF"
+                            return revString
+                        
                         }
                         
-                        function displayMessage2() {
-                            let msg = "";
+                        //Definition of the function that displays the reversed string on the end user's screen:
+                        function displayString(revString) {
+                            let output = document.getElementById("results"); //line 79 in app.html, the paragraphed return was assigned id="results"
                         
-                            msg = document.getElementById("message").value;
-                        
-                            Swal.fire(msg);
-                        
+                            output.innerHTML = revString;
+                            // innerHTML is a property of an element that contains a String. We set revString to the output of the element containing the "results" id.
                         }
                     </code>
                     </pre>
                 </div>
-                <div class="col-lg-4 col-sm-12">
+                <!-- <div class="col-lg-4 col-sm-12">
                     <p>The code is structured in one function.</p>
                     <h5>getValues</h5>
                     <p>Prints out your message!</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
@@ -98,7 +135,7 @@
                 <div
                     class="col d-flex order-last order-lg-first align-items-center justify-content-center justify-content-lg-start">
                     <div>
-                        <span class="text-muted">&copy2021</span> Jordan Hopps | jordanthopps@outlook.com
+                        <span class="text-muted">&copy2021</span> Jordan Hopps | dev.jordanhopps@gmail.com
                     </div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-center justify-content-lg-center">
@@ -108,7 +145,6 @@
                     <div class="row">
                         <div class="col social"><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></div>
                         <div class="col social"><a href="#"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>
